@@ -24,4 +24,5 @@ npm run dev
 
 The app shows the cause that matches today's date or a placeholder message if none is found.
 
-QR images are stored in `/public/qr/` and named after each nonprofit using a slug of its name (e.g. `evergreen-fund.png`).
+Each entry in `data/causes.js` lists a `qr_image` path (e.g. `/qr/evergreen-fund.png`).
+Run `node generate_qrs.js` to create these images whenever you update the causes list.

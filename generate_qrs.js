@@ -16,8 +16,7 @@ async function generate() {
   await ensureDir(outDir);
 
   for (const cause of causes) {
-    const slug = cause.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    const fileName = `${slug}.png`;
+    const fileName = path.basename(cause.qr_image);
     const outPath = path.join(outDir, fileName);
     try {
       await QRCode.toFile(outPath, cause.external_link);

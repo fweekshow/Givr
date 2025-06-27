@@ -21,8 +21,7 @@ export default function Home() {
     );
   }
 
-  const slug = cause.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-  const qrPath = `/qr/${slug}.png`
+  const qrPath = cause.qr_image
 
   return (
     <main style={{maxWidth: '600px', margin: 'auto', padding: '1rem', fontFamily: 'Arial', textAlign: 'center'}}>
