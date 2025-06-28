@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply font-inter;
+  @apply font-mono bg-terminal-bg text-white;
 } 

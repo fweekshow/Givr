@@ -26,58 +26,50 @@ export default function Home({ cause }) {
         <img
           src="/logo.png"
           alt="Logo"
-          className="w-28 h-28 object-contain drop-shadow-lg"
-          style={{ borderRadius: '12px', background: 'white', padding: '4px' }}
+          className="w-24 h-24 object-contain drop-shadow-lg border-4 border-terminal bg-terminal-card rounded-lg"
         />
       </a>
 
-      <div className="min-h-screen bg-gradient-to-br from-primary to-primary-dark font-inter flex items-center justify-center px-6">
-        <div className="bg-white rounded-3xl p-10 shadow-2xl max-w-xl w-full text-center">
-          {cause && (
-            <img
-              src={cause.logo || '/logo.png'}
-              alt={cause.name}
-              className="w-28 h-28 object-contain mx-auto mb-6 hidden" // Hide the logo in the card
-            />
-          )}
-
+      <div className="min-h-screen flex items-center justify-center px-6 bg-terminal-bg">
+        <div className="bg-terminal-card rounded-xl p-10 shadow-xl max-w-xl w-full text-center border border-terminal">
           {cause ? (
             <>
-              <h1 className="text-3xl font-bold text-gray-800 mb-4">
+              <h1 className="text-3xl font-bold text-terminal mb-4 tracking-wide">
                 {cause.name}
               </h1>
-              <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto leading-relaxed">
+              <p className="text-lg text-gray-200 mb-8 max-w-md mx-auto leading-relaxed">
                 {cause.description}
               </p>
 
               <div className="flex flex-col items-center gap-4 mb-8">
-                <div className="bg-green-50 p-5 rounded-xl inline-block">
+                <div className="bg-terminal-bg p-5 rounded-xl inline-block border-2 border-terminal shadow-md">
                   <img
                     src={qrPath}
                     alt={`QR Code for ${cause.name}`}
-                    className="w-48 h-48 rounded-lg shadow-md"
+                    className="w-48 h-48 rounded-lg"
                   />
                 </div>
                 <a
                   href={cause.external_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full max-w-xs bg-gradient-to-r from-primary to-primary-dark text-white px-8 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg hover:-translate-y-1 transition text-center"
+                  className="w-full max-w-xs bg-terminal text-black px-8 py-3 rounded font-bold shadow hover:bg-terminal/80 transition text-center border-2 border-terminal tracking-widest"
+                  style={{ fontFamily: 'Fira Mono, Menlo, Consolas, monospace' }}
                 >
-                  Donate via Endaoment
+                  DONATE
                 </a>
               </div>
 
-              <p className="text-sm text-gray-500 mt-6">
+              <p className="text-sm text-terminal mt-6">
                 Scan the QR code above with your phone's camera to donate directly to this cause.
               </p>
             </>
           ) : (
             <>
-              <h1 className="text-3xl font-semibold text-gray-800 mb-4">
+              <h1 className="text-3xl font-semibold text-terminal mb-4">
                 Cause Coming Soon
               </h1>
-              <p className="text-md text-gray-500">
+              <p className="text-md text-gray-400">
                 Please check back later for today's featured cause.
               </p>
             </>
