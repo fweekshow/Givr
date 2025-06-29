@@ -1,7 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import QRCode from 'qrcode';
-import { causes } from './data/causes.js';
 
 async function ensureDir(dir) {
   try {
@@ -15,16 +14,20 @@ async function generate() {
   const outDir = path.join(process.cwd(), 'public', 'qr');
   await ensureDir(outDir);
 
-  for (const cause of causes) {
-    const slug = cause.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    const fileName = `${slug}.png`;
-    const outPath = path.join(outDir, fileName);
-    try {
-      await QRCode.toFile(outPath, cause.external_link);
-      console.log(`Generated ${outPath}`);
-    } catch (err) {
-      console.error(`Failed to generate QR for ${cause.name}`, err);
-    }
+  // Generate a single static QR code that points to our redirect endpoint
+  // Use the actual deployed URL
+  const baseUrl = 'https://g1vr.vercel.app';
+  const redirectUrl = `${baseUrl}/api/redirect`;
+  
+  const fileName = 'daily-cause.png';
+  const outPath = path.join(outDir, fileName);
+  
+  try {
+    await QRCode.toFile(outPath, redirectUrl);
+    console.log(`Generated static QR code: ${outPath}`);
+    console.log(`QR code points to: ${redirectUrl}`);
+  } catch (err) {
+    console.error('Failed to generate static QR code', err);
   }
 }
 

@@ -1,12 +1,9 @@
 import { causes } from '../data/causes';
 import Head from 'next/head';
-import '../styles/globals.css'
-
-
 
 export default function Home({ cause }) {
-  const slug = cause?.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-  const qrPath = `/qr/${slug}.png`;
+  // Use the static QR code path
+  const qrPath = '/qr/daily-cause.png';
 
   return (
     <>
@@ -45,7 +42,7 @@ export default function Home({ cause }) {
                 <div className="bg-terminal-bg p-5 rounded-xl inline-block border-2 border-terminal shadow-md">
                   <img
                     src={qrPath}
-                    alt={`QR Code for ${cause.name}`}
+                    alt="Daily Cause QR Code"
                     className="w-48 h-48 rounded-lg"
                   />
                 </div>
@@ -61,7 +58,7 @@ export default function Home({ cause }) {
               </div>
 
               <p className="text-sm text-terminal mt-6">
-                Scan the QR code above with your phone's camera to donate directly to this cause.
+                Scan the QR code above with your phone's camera to donate directly to today's cause.
               </p>
             </>
           ) : (
