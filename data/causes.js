@@ -1,4 +1,4 @@
-export const causes = [
+const causes = [
   {
     date: "2025-06-27",
     name: "Evergreen Fund",
@@ -48,3 +48,5 @@ export const causes = [
     external_link: "https://app.endaoment.org/orgs/95-4470909"
   }
 ];
+
+module.exports = { causes };

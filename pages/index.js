@@ -1,4 +1,4 @@
-import { causes } from '../data/causes';
+const { causes } = require('../data/causes');
 import Head from 'next/head';
 
 export default function Home({ cause }) {

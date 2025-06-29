@@ -1,4 +1,4 @@
-import { causes } from '../../data/causes';
+const { causes } = require('../../data/causes');
 
 export default function handler(req, res) {
   // Get current date in Pacific Time

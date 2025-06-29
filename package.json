@@ -1,7 +1,6 @@
 {
   "name": "scan-to-support",
   "version": "1.0.0",
-  "type": "module",
   "description": "Scan-to-Support Next.js app displaying rotating nonprofits",
   "scripts": {
     "dev": "next dev",
