@@ -33,4 +33,19 @@ html {
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reusable layout classes */
+@layer components {
+  .card-layout {
+    @apply flex flex-col flex-1 min-w-0 bg-black rounded-xl p-6 shadow-xl border border-terminal text-white;
+  }
+  
+  .container-layout {
+    @apply flex flex-col md:flex-row items-stretch justify-center gap-6 px-4 py-10 w-full max-w-4xl mx-auto;
+  }
+
+  .card-fixed-size {
+    @apply w-full h-[540px] md:w-[400px] md:h-[540px];
+  }
 } 
