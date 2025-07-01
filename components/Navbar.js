@@ -1,18 +1,18 @@
 import Link from 'next/link';
-import {
-  Wallet,
-  ConnectWallet,
-  WalletDropdown,
-  WalletDropdownFundLink,
-  WalletDropdownDisconnect,
-} from '@coinbase/onchainkit/wallet';
-import {
-  Address,
-  Avatar,
-  Name,
-  Identity,
-  EthBalance,
-} from '@coinbase/onchainkit/identity';
+import dynamic from 'next/dynamic';
+
+// Dynamically import the client-side wallet component with no SSR
+const ClientWallet = dynamic(
+  () => import('./ClientWallet'),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="flex items-center gap-2">
+        <div className="h-8 w-20 bg-gray-700 rounded-lg animate-pulse"></div>
+      </div>
+    )
+  }
+);
 
 export default function Navbar() {
   return (
@@ -41,24 +41,9 @@ export default function Navbar() {
           </a>
         </Link>
       </div>
-      {/* OnchainKit Wallet Connect */}
+      {/* Client-side only wallet component */}
       <div className="flex items-center gap-2">
-        <Wallet>
-          <ConnectWallet>
-            <Avatar className="h-5 w-5" />
-            <Name />
-          </ConnectWallet>
-          <WalletDropdown>
-            <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
-              <Avatar />
-              <Name />
-              <Address />
-              <EthBalance />
-            </Identity>
-            <WalletDropdownFundLink />
-            <WalletDropdownDisconnect />
-          </WalletDropdown>
-        </Wallet>
+        <ClientWallet />
       </div>
     </nav>
   );

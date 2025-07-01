@@ -1,6 +1,6 @@
 const { causes } = require('../data/causes');
-import Head from 'next/head';
-import Link from 'next/link';
+const Head = require('next/head').default;
+const Link = require('next/link').default;
 
 export default function Home({ cause }) {
   // Use the static QR code path
