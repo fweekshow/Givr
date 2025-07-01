@@ -1,4 +1,3 @@
-import { usePrivy, useWallets } from '@privy-io/react-auth';
 const { causes } = require('../data/causes');
 import Head from 'next/head';
 import Link from 'next/link';
@@ -18,8 +17,8 @@ export default function Home({ cause }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
 
-      <div className="min-h-screen flex items-start justify-center px-2 md:px-4 bg-terminal-bg">
-        <div className="bg-terminal-card rounded-xl p-4 md:p-6 shadow-xl max-w-md w-full text-center border border-terminal mx-2 mt-4">
+      <div className="flex flex-col flex-grow items-center justify-center px-2 md:px-4 bg-terminal-bg">
+        <div className="bg-black rounded-xl p-4 md:p-6 shadow-xl max-w-md w-full text-center border border-terminal mx-2 mt-4 text-white">
           {cause ? (
             <>
               <h1 className="text-xl md:text-2xl font-bold text-terminal mb-2 tracking-wide">
@@ -30,7 +29,7 @@ export default function Home({ cause }) {
               </p>
 
               <div className="flex flex-col items-center gap-3 mb-4 md:mb-6">
-                <div className="bg-terminal-bg p-2 md:p-3 rounded-xl inline-block border-2 border-terminal shadow-md">
+                <div className="bg-white p-2 md:p-3 rounded-xl inline-block border-2 border-terminal shadow-md">
                   <img
                     src={qrPath}
                     alt="Daily Cause QR Code"

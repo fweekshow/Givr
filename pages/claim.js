@@ -1,4 +1,3 @@
-import { usePrivy, useWallets } from '@privy-io/react-auth';
 import { useEffect, useState } from 'react';
 
 function getToday() {
@@ -7,27 +6,28 @@ function getToday() {
 }
 
 export default function ClaimPage() {
-  const { ready, authenticated } = usePrivy();
-  const { wallets } = useWallets();
+  // Placeholder for wallet address (to be replaced with OnchainKit/wagmi logic)
+  const [walletAddress, setWalletAddress] = useState(null);
   const [claimed, setClaimed] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!ready) return;
-    if (!authenticated || wallets.length === 0) {
-      setLoading(false);
-      return;
-    }
-    const today = getToday();
-    const key = `claim_${wallets[0].address}_${today}`;
-    setClaimed(!!localStorage.getItem(key));
+    // TODO: Replace with actual wallet connection logic
+    // setWalletAddress(...)
     setLoading(false);
-  }, [ready, authenticated, wallets]);
+  }, []);
+
+  useEffect(() => {
+    if (!walletAddress) return;
+    const today = getToday();
+    const key = `claim_${walletAddress}_${today}`;
+    setClaimed(!!localStorage.getItem(key));
+  }, [walletAddress]);
 
   const handleClaim = () => {
-    if (wallets.length === 0) return;
+    if (!walletAddress) return;
     const today = getToday();
-    const key = `claim_${wallets[0].address}_${today}`;
+    const key = `claim_${walletAddress}_${today}`;
     localStorage.setItem(key, 'claimed');
     setClaimed(true);
   };
@@ -36,10 +36,10 @@ export default function ClaimPage() {
     <div className="min-h-[60vh] flex flex-col items-center justify-center">
       <div className="bg-terminal-card border border-terminal rounded-xl p-8 max-w-md w-full text-center shadow-xl">
         <h1 className="text-2xl font-bold text-terminal mb-4">Claim Your Daily Reward</h1>
-        {!ready || loading ? (
+        {loading ? (
           <p className="text-gray-400">Loading...</p>
-        ) : !authenticated || wallets.length === 0 ? (
-          <p className="text-gray-400">Please sign in and connect your wallet to claim your reward.</p>
+        ) : !walletAddress ? (
+          <p className="text-gray-400">Claims Coming Soon</p>
         ) : claimed ? (
           <div>
             <p className="text-terminal mb-2">🎉 You have already claimed your reward for today!</p>

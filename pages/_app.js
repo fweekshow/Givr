@@ -1,11 +1,12 @@
 import '../styles/globals.css'
-import { PrivyProvider } from '@privy-io/react-auth'
+import '@coinbase/onchainkit/styles.css'
 import Navbar from '../components/Navbar';
 import Head from 'next/head';
+import { Providers } from '../providers';
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <PrivyProvider appId="cmci3tfzs009kla0mw08lkuky">
+    <Providers>
       <Head>
         <title>G1VR – Scan to Support</title>
         <meta name="description" content="G1VR lets you support a new nonprofit every day by scanning a QR code. Simple, secure, and impactful giving." />
@@ -22,6 +23,6 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
       <Navbar />
       <Component {...pageProps} />
-    </PrivyProvider>
+    </Providers>
   )
 } 
