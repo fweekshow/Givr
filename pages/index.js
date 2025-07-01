@@ -1,10 +1,20 @@
 const { causes } = require('../data/causes');
 const Head = require('next/head').default;
 const Link = require('next/link').default;
+import ActivityFeed from '../components/ActivityFeed';
+
+
 
 export default function Home({ cause }) {
   // Use the static QR code path
   const qrPath = '/qr/daily-cause.png';
+
+  // Helper to extract EIN from external_link and remove hyphens
+  function extractEinFromUrl(url) {
+    const match = url && url.match(/orgs\/([\d-]+)/);
+    return match ? match[1].replace(/-/g, '') : null;
+  }
+  const ein = extractEinFromUrl(cause?.external_link);
 
   return (
     <>
@@ -17,11 +27,12 @@ export default function Home({ cause }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
 
-      <div className="flex flex-col flex-grow items-center justify-center px-2 md:px-4 bg-terminal-bg">
-        <div className="bg-black rounded-xl p-4 md:p-6 shadow-xl max-w-md w-full text-center border border-terminal mx-2 mt-4 text-white">
+      <div className="container-layout mt-8">
+        {/* Cause Card */}
+        <div className="card-layout card-fixed-size">
           {cause ? (
             <>
-              <h1 className="text-xl md:text-2xl font-bold text-terminal mb-2 tracking-wide">
+              <h1 className="text-xl md:text-2xl font-bold text-terminal mb-2 tracking-wide text-center mx-auto">
                 {cause.name}
               </h1>
               <p className="text-sm md:text-base text-gray-200 mb-4 md:mb-6 max-w-md mx-auto leading-relaxed">
@@ -47,7 +58,7 @@ export default function Home({ cause }) {
                 </a>
               </div>
 
-              <p className="text-xs md:text-sm text-terminal mt-2 md:mt-4 px-2">
+              <p className="text-xs md:text-sm text-white mt-2 md:mt-4 px-2 text-center">
                 Scan the QR code above with your phone's camera to donate directly to today's cause.
               </p>
             </>
@@ -62,6 +73,12 @@ export default function Home({ cause }) {
             </>
           )}
         </div>
+        {/* Activity Feed Card */}
+        {ein && (
+          <div className="card-layout card-fixed-size overflow-y-auto">
+            <ActivityFeed ein={ein} />
+          </div>
+        )}
       </div>
     </>
   );

@@ -16,8 +16,8 @@ const ClientWallet = dynamic(
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-between items-center h-14 px-4 mt-3 max-w-4xl mx-auto">
-      <div className="flex items-center gap-4">
+    <nav className="w-full border-b border-white bg-white/5 backdrop-blur-md shadow-sm">
+      <div className="flex justify-end items-center gap-3 max-w-6xl mx-auto px-4 py-4">
         {/* Home Link */}
         <Link href="/" legacyBehavior>
           <a className="flex items-center gap-2 hover:opacity-80 font-bold tracking-wide">
@@ -40,10 +40,10 @@ export default function Navbar() {
             <span className="hidden sm:inline text-base text-white">Claims</span>
           </a>
         </Link>
-      </div>
-      {/* Client-side only wallet component */}
-      <div className="flex items-center gap-2">
-        <ClientWallet />
+        {/* Client-side only wallet component */}
+        <div className="flex items-center">
+          <ClientWallet />
+        </div>
       </div>
     </nav>
   );
