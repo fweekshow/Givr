@@ -1,70 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import {
+  ConnectWallet,
+  Wallet,
+  WalletDropdown,
+  WalletDropdownDisconnect,
+} from '@coinbase/onchainkit/wallet';
+import {
+  Address,
+  Avatar,
+  Name,
+  Identity,
+} from '@coinbase/onchainkit/identity';
+import { OnchainKitProvider } from '@coinbase/onchainkit';
+import { base } from 'wagmi/chains';
+import { useRef } from 'react';
 
 export default function ClientWallet() {
-  const [WalletComponent, setWalletComponent] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    // Dynamically import OnchainKit components only on client side
-    const loadWalletComponents = async () => {
-      try {
-        const { OnchainKitProvider } = await import('@coinbase/onchainkit');
-        const { base } = await import('wagmi/chains');
-        const { Wallet, ConnectWallet, WalletDropdown, WalletDropdownFundLink, WalletDropdownDisconnect } = await import('@coinbase/onchainkit/wallet');
-        const { Address, Avatar, Name, Identity, EthBalance } = await import('@coinbase/onchainkit/identity');
-        
-        const WalletUI = () => (
-          <OnchainKitProvider
-            apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
-            chain={base}
-          >
-            <Wallet>
-              <ConnectWallet>
-                <Avatar className="h-5 w-5" />
-                <Name />
-              </ConnectWallet>
-              <WalletDropdown>
-                <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
-                  <Avatar />
-                  <Name />
-                  <Address />
-                  <EthBalance />
-                </Identity>
-                <WalletDropdownFundLink />
-                <WalletDropdownDisconnect />
-              </WalletDropdown>
-            </Wallet>
-          </OnchainKitProvider>
-        );
-        
-        setWalletComponent(() => WalletUI);
-      } catch (error) {
-        console.error('Failed to load wallet components:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadWalletComponents();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex items-center gap-2">
-        <div className="h-8 w-20 bg-gray-700 rounded-lg animate-pulse"></div>
-      </div>
-    );
-  }
-
-  if (!WalletComponent) {
-    return (
-      <div className="flex items-center gap-2">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-          Connect Wallet
-        </button>
-      </div>
-    );
-  }
-
-  return <WalletComponent />;
-} 
+  return (
+    <div className="flex justify-end relative z-50" ref={dropdownRef}>
+      <OnchainKitProvider
+        apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+        chain={base}
+        dropdownContainerRef={dropdownRef}
+      >
+        <Wallet>
+          <ConnectWallet>
+            <Avatar className="h-4 w-4" />
+            <Name className="truncate max-w-[70px] text-xs" />
+          </ConnectWallet>
+          <WalletDropdown>
+            <Identity className="px-2 py-1 text-xs gap-1" hasCopyAddressOnClick>
+              <Avatar className="h-4 w-4" />
+              <Name className="truncate max-w-[70px] text-xs" />
+              <Address className="text-[10px] text-gray-400 truncate max-w-[90px]" />
+            </Identity>
+            <WalletDropdownDisconnect className="w-full bg-red-600 text-white text-xs px-2 py-1 rounded hover:bg-red-700 transition mt-1" />
+          </WalletDropdown>
+        </Wallet>
+      </OnchainKitProvider>
+    </div>
+  );
+}

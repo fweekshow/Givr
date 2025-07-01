@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-// import '@coinbase/onchainkit/styles.css'
+import '@coinbase/onchainkit/styles.css'
 import Navbar from '../components/Navbar';
 import Head from 'next/head';
 import { Providers } from '../providers';
