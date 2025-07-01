@@ -10,11 +10,13 @@
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
-    "@privy-io/react-auth": "^2.17.2",
+    "@coinbase/onchainkit": "^0.38.15",
     "next": "latest",
     "qrcode": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "viem": "^2.31.6",
+    "wagmi": "^2.15.6"
   },
   "devDependencies": {
     "@types/react": "19.1.8",
