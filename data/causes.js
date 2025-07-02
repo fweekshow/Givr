@@ -31,21 +31,33 @@ const causes = [
   },
   {
     date: "2025-07-02",
+    name: "Above Ground Inc",
+    description: "The mission of Above Ground is to raise awareness and funds for the treatment of mental health issues for individuals in need within the music industry.",
+    external_link: "https://app.endaoment.org/orgs/85-1279802"
+  },
+  {
+    date: "2025-07-03",
     name: "The Institute for Love and Time (TILT)",
     description: "TILT builds technologies to remedy hopelessness and despair by integrating unconditional love across time, positively impacting global mental health.",
     external_link: "https://app.endaoment.org/orgs/84-2570591"
   },
   {
-    date: "2025-07-03",
+    date: "2025-07-04",
     name: "Blackburn Foundation",
     description: "The Blackburn Foundation is a nonprofit organization based in Los Angeles, CA, supporting various charitable initiatives.",
     external_link: "https://app.endaoment.org/orgs/36-5017255"
   },
   {
-    date: "2025-07-04",
+    date: "2025-07-05",
     name: "MusiCares",
     description: "MusiCares helps the humans behind music by offering preventive, emergency, and recovery programs, supporting the health and welfare of the music community.",
     external_link: "https://app.endaoment.org/orgs/95-4470909"
+  },
+  {
+    date: "2025-07-06",
+    name: "Community Partners International",
+    description: "Build thriving communities in Southeast Asia through equitable access to quality health services for health and welfare.",
+    external_link: "https://app.endaoment.org/orgs/94-3375666"
   }
 ];
 

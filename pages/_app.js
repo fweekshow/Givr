@@ -3,6 +3,7 @@ import '@coinbase/onchainkit/styles.css'
 import Navbar from '../components/Navbar';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import TickerTape from '../components/TickerTape';
 
 // Dynamically import Providers with SSR disabled
 const Providers = dynamic(() => import('../providers').then(mod => mod.Providers), { ssr: false });
@@ -25,6 +26,7 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="twitter:image" content="/logo.png" />
       </Head>
       <Navbar />
+      <TickerTape className="z-10" />
       <Component {...pageProps} />
     </Providers>
   )

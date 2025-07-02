@@ -40,7 +40,7 @@ export default function Home({ cause }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
 
-      <div className="container-layout mt-8">
+      <div className="container-layout">
         {/* Cause Card */}
         <div ref={leftCardRef} className="card-layout card-fixed-size">
           {cause ? (
