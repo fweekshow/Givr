@@ -1,9 +1,8 @@
+import { useRef, useEffect, useState } from 'react';
 const { causes } = require('../data/causes');
 const Head = require('next/head').default;
 const Link = require('next/link').default;
 import ActivityFeed from '../components/ActivityFeed';
-
-
 
 export default function Home({ cause }) {
   // Use the static QR code path
@@ -15,6 +14,20 @@ export default function Home({ cause }) {
     return match ? match[1].replace(/-/g, '') : null;
   }
   const ein = extractEinFromUrl(cause?.external_link);
+
+  // Pixel-perfect height matching for desktop
+  const leftCardRef = useRef(null);
+  const [leftCardHeight, setLeftCardHeight] = useState();
+  useEffect(() => {
+    function updateHeight() {
+      if (leftCardRef.current) {
+        setLeftCardHeight(leftCardRef.current.offsetHeight);
+      }
+    }
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, [cause, ein]);
 
   return (
     <>
@@ -29,7 +42,7 @@ export default function Home({ cause }) {
 
       <div className="container-layout mt-8">
         {/* Cause Card */}
-        <div className="card-layout card-fixed-size">
+        <div ref={leftCardRef} className="card-layout card-fixed-size">
           {cause ? (
             <>
               <h1 className="text-xl md:text-2xl font-bold text-terminal mb-2 tracking-wide text-center mx-auto">
@@ -75,7 +88,10 @@ export default function Home({ cause }) {
         </div>
         {/* Activity Feed Card */}
         {ein && (
-          <div className="card-layout card-fixed-size overflow-y-auto">
+          <div
+            className="card-layout card-fixed-size overflow-y-auto"
+            style={leftCardHeight ? { maxHeight: leftCardHeight, minHeight: 0 } : {}}
+          >
             <ActivityFeed ein={ein} />
           </div>
         )}
