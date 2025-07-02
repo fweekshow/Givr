@@ -2,7 +2,10 @@ import '../styles/globals.css'
 import '@coinbase/onchainkit/styles.css'
 import Navbar from '../components/Navbar';
 import Head from 'next/head';
-import { Providers } from '../providers';
+import dynamic from 'next/dynamic';
+
+// Dynamically import Providers with SSR disabled
+const Providers = dynamic(() => import('../providers').then(mod => mod.Providers), { ssr: false });
 
 export default function MyApp({ Component, pageProps }) {
   return (
