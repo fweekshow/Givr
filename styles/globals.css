@@ -46,6 +46,6 @@ html {
   }
 
   .card-fixed-size {
-    @apply w-full h-[540px] md:w-[400px] md:h-[540px];
+    @apply w-full md:w-[460px];
   }
 } 

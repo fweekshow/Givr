@@ -28,8 +28,8 @@ export default function ActivityFeed({ ein }) {
   if (loading) return <div>Loading activity...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  // Only show the 5 most recent donations or grants
-  const filteredActivities = activities.filter(a => a.type === 'donation' || a.type === 'grant').slice(0, 5);
+  // Only show the 10 most recent donations or grants
+  const filteredActivities = activities.filter(a => a.type === 'donation' || a.type === 'grant').slice(0, 10);
 
   return (
     <div>
