@@ -16,7 +16,7 @@ const ClientWallet = dynamic(
 
 export default function Navbar() {
   return (
-    <nav className="w-full border-b border-white bg-white/5 backdrop-blur-md shadow-sm">
+    <nav className="w-full border-b border-white bg-white/5 backdrop-blur-md shadow-sm relative z-30">
       <div className="flex justify-end items-center gap-3 max-w-6xl mx-auto px-4 py-4">
         {/* Home Link */}
         <Link href="/" legacyBehavior>
