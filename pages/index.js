@@ -40,6 +40,12 @@ export default function Home({ cause }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </Head>
 
+      <div className="text-center mb-6">
+        <h2 className="text-lg md:text-xl font-semibold text-terminal tracking-wide">
+          Daily Revolving QR Code
+        </h2>
+      </div>
+
       <div className="container-layout">
         {/* Cause Card */}
         <div ref={leftCardRef} className="card-layout card-fixed-size">
