@@ -72,13 +72,13 @@ const causes = [
     external_link: "https://app.endaoment.org/orgs/94-3242767"
   },
   {
-    date: "2025-07-09",
+    date: "2025-07-10",
     name: "TWLOHA, Inc.",
     description: "TWLOHA is dedicated to presenting hope and finding help for people struggling with depression, addiction, self-injury, and suicide.",
     external_link: "https://app.endaoment.org/orgs/26-0789229"
   },
   {
-    date: "2025-07-10",
+    date: "2025-07-09",
     name: "Crystal Hearts",
     description: "Providing assistance in active war zones, focusing on delivering aid to frontline areas in Ukraine and supporting civilians and defenders.",
     external_link: "https://app.endaoment.org/orgs/93-3482060"
