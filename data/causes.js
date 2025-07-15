@@ -72,16 +72,16 @@ const causes = [
     external_link: "https://app.endaoment.org/orgs/94-3242767"
   },
   {
-    date: "2025-07-10",
-    name: "TWLOHA, Inc.",
-    description: "TWLOHA is dedicated to presenting hope and finding help for people struggling with depression, addiction, self-injury, and suicide.",
-    external_link: "https://app.endaoment.org/orgs/26-0789229"
-  },
-  {
     date: "2025-07-09",
     name: "Crystal Hearts",
     description: "Providing assistance in active war zones, focusing on delivering aid to frontline areas in Ukraine and supporting civilians and defenders.",
     external_link: "https://app.endaoment.org/orgs/93-3482060"
+  },
+  {
+    date: "2025-07-10",
+    name: "TWLOHA, Inc.",
+    description: "TWLOHA is dedicated to presenting hope and finding help for people struggling with depression, addiction, self-injury, and suicide.",
+    external_link: "https://app.endaoment.org/orgs/26-0789229"
   },
   {
     date: "2025-07-11",
@@ -109,9 +109,9 @@ const causes = [
   },
   {
     date: "2025-07-15",
-    name: "MusiCares",
-    description: "MusiCares helps the humans behind music by offering preventive, emergency, and recovery programs, supporting the health and welfare of the music community.",
-    external_link: "https://app.endaoment.org/orgs/95-4470909"
+    name: "Above Ground Inc",
+    description: "The mission of Above Ground is to raise awareness and funds for the treatment of mental health issues for individuals in need within the music industry.",
+    external_link: "https://app.endaoment.org/orgs/85-1279802"
   },
   {
     date: "2025-07-16",
